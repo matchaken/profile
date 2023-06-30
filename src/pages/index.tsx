@@ -3,9 +3,11 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import ParticleComponent from '@/component/ParticleComponent'
 export default function Home() {
   return (
     <LayoutPage>
+      <ParticleComponent />
       <div className='vh-100 d-flex justify-content-center align-items-center'>
         <motion.h1
           initial={{ scale: 0 }}

@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <link rel='icon' href='/icon.png' type='image/png' />
+        <link rel='icon' href='/icons/icon.png' type='image/png' />
         <title>Matcha Latte</title>
       </Head>
       <ChakraProvider theme={chakraTheme}>
