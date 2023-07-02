@@ -1,14 +1,19 @@
-import { BaseProps } from '@/model/base-prop'
+import { IBaseProps } from '@/model/base-prop'
 import Head from 'next/head'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
+import TabComponent from './TabComponent'
+import { tabMenu } from '@/config/constraint'
 
-const LayoutPage: FC<BaseProps> = ({ cls, children }) => {
+const LayoutPage: FC<IBaseProps> = ({ cls, children }) => {
+  const customStyle = cls || ''
+
   return (
-    <>
-      <div className={`min-vh-100 d-flex ${cls}`}>
+    <div className='min-vh-100'>
+      <TabComponent/>
+      <div className={`min-vh-90 d-flex ${customStyle}`}>
         <div className='container'>{children}</div>
       </div>
-    </>
+    </div>
   )
 }
 

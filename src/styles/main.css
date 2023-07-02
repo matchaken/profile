@@ -1,6 +1,6 @@
 body {
   background-color: #1c1c1c !important;
-  font-family: Arial, sans-serif !important;
+  font-family: 'Roboto', sans-serif;
   color: #ffff !important;
 }
 
@@ -12,4 +12,29 @@ body {
   padding: 0;
   top: 0;
   left: 0;
+  z-index: -1;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+}
+
+.tab-component {
+  min-height: 10vh;
+  min-width: 100vw;
+  background-color: rgba(5, 5, 5, 0.5);
+}
+
+.font-weight-bold {
+  font-weight: 600 !important;
+}
+
+@media (max-width: 500) {
+  /* CSS rules here */
+}
+
+/* Styles for screens larger than 992px */
+@media (min-width: 900x) {
+  /* CSS rules here */
 }

@@ -1,32 +1,25 @@
-import { BaseProps } from '@/model/base-prop'
+import { IBaseProps } from '@/model/base-prop'
 import React, { useRef, useEffect, FC, useCallback } from 'react'
 import { Particles } from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import type { Container, Engine } from 'tsparticles-engine'
 
-const ParticleComponent: FC<BaseProps> = ({ children }) => {
+const ParticleComponent: FC<IBaseProps> = ({ children }) => {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine)
   }, [])
 
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {
-      await console.log(container)
-    },
-    []
-  )
   return (
     <Particles
       id='tsparticles'
       init={particlesInit}
-      loaded={particlesLoaded}
       options={{
         background: {
           color: {
             value: '#1c1c1c',
           },
         },
-        fpsLimit: 144,
+        fpsLimit: 60,
         particles: {
           color: {
             value: '#ffffff',
@@ -42,14 +35,11 @@ const ParticleComponent: FC<BaseProps> = ({ children }) => {
             enable: true,
           },
           move: {
-            direction: 'none',
             enable: true,
-            outModes: {
-              default: 'bounce',
-            },
-            random: false,
+            outModes: 'split',
+            random: true,
             speed: 0.5,
-            straight: false,
+            straight: true,
           },
           number: {
             density: {
@@ -62,7 +52,7 @@ const ParticleComponent: FC<BaseProps> = ({ children }) => {
             value: 0.5,
           },
           shape: {
-            type: 'square',
+            type: 'circle',
           },
           size: {
             value: { min: 0.5, max: 2.5 },
