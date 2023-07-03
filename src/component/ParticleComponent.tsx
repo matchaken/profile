@@ -16,20 +16,20 @@ const ParticleComponent: FC<IBaseProps> = ({ children }) => {
       options={{
         background: {
           color: {
-            value: '#1c1c1c',
+            value: '#f1f1f1',
           },
         },
         fpsLimit: 60,
         particles: {
           color: {
-            value: '#ffffff',
+            value: 'rgba(0,100,250,0.8)',
           },
           links: {
-            color: '#ffffff',
+            color: 'rgb(100,100,100)',
             distance: 120,
             enable: true,
-            opacity: 0.5,
-            width: 0.05,
+            opacity: 0.2,
+            width: 0.2,
           },
           collisions: {
             enable: true,
@@ -55,7 +55,7 @@ const ParticleComponent: FC<IBaseProps> = ({ children }) => {
             type: 'circle',
           },
           size: {
-            value: { min: 0.5, max: 2.5 },
+            value: { min: 1, max: 3 },
           },
         },
         detectRetina: true,

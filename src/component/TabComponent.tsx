@@ -33,6 +33,7 @@ const TabComponent: FC<IBaseProps> = ({ cls, children }) => {
           href={data.link}
           target={data.link.match('www') ? '_blank' : '_self'}
           className={`mx-3 font-weight-bold`}
+          style={{color: 'rgb(0,250,250)'}}
         >
           {data.label.toLocaleUpperCase()}
         </a>
