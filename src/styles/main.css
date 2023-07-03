@@ -1,6 +1,7 @@
 body {
   background-color: #1c1c1c !important;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Asap Condensed', sans-serif !important;
+  font-size: 1.25rem;
   color: #ffff !important;
 }
 
@@ -30,11 +31,17 @@ body {
   font-weight: 600 !important;
 }
 
-@media (max-width: 500) {
-  /* CSS rules here */
+.tab-active {
+  border-bottom: 2.5px solid white !important;
 }
 
-/* Styles for screens larger than 992px */
-@media (min-width: 900x) {
-  /* CSS rules here */
+.tab:hover {
+  cursor: pointer;
+  border-bottom: 2.5px solid rgba(255,255,255,0.3);
+}
+
+@media screen and (max-width: 768px) {  
+  .tab-list {
+    visibility: hidden;
+  }
 }

@@ -1,5 +1,9 @@
 import { IAction } from '@/model/action'
+import { ITabMenu } from '@/model/tab'
 import { extendTheme } from '@chakra-ui/react'
+import Router from 'next/router'
+
+const router = Router
 
 export const chakraTheme = extendTheme({
   config: {
@@ -8,17 +12,13 @@ export const chakraTheme = extendTheme({
   },
 })
 
-export const tabMenu: IAction[] = [
+export const tabMenu: ITabMenu[] = [
   {
     label: 'HOME',
-    action: () => {
-      console.log('click homepage')
-    },
+    link: '/'
   },
   {
-    label: 'profile page',
-    action: () => {
-      console.log('click homepage')
-    },
+    label: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/nawamongkol/'
   },
 ]

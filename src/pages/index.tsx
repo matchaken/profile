@@ -6,18 +6,6 @@ import { motion } from 'framer-motion'
 import ParticleComponent from '@/component/ParticleComponent'
 import useSystemStore from '@/store/useSystemStore'
 export default function Home() {
-  const { addTabMenu } = useSystemStore((state) => ({
-    addTabMenu: state.addTabMenu,
-  }))
-
-  useEffect(() => {
-    addTabMenu([
-      {
-        label: 'hello',
-        action: () => {},
-      },
-    ])
-  }, [])
 
   return (
     <LayoutPage>

@@ -1,14 +1,12 @@
-import { IAction } from '@/model/action'
 import { IBaseProps } from '@/model/base-prop'
+import { ITabMenu } from '@/model/tab'
 import useSystemStore from '@/store/useSystemStore'
-import { Button } from '@chakra-ui/react'
-import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { FC, ReactNode, useEffect, useState } from 'react'
 
 const TabComponent: FC<IBaseProps> = ({ cls, children }) => {
   const customStyle = cls || ''
-
-  const [isMobile, setIsMobile] = useState(false)
+  const router = useRouter()
   const [currentPosition, setCurrentPosition] = useState<number>(0)
 
   const { tabMenu } = useSystemStore((state) => ({
@@ -16,12 +14,6 @@ const TabComponent: FC<IBaseProps> = ({ cls, children }) => {
   }))
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 500px)')
-
-    mediaQuery.addEventListener('change', (event) => {
-      setIsMobile(event.matches)
-    })
-
     window.addEventListener('scroll', () => {
       const yOffset = window.scrollY || window.pageYOffset
       setCurrentPosition(yOffset)
@@ -29,37 +21,44 @@ const TabComponent: FC<IBaseProps> = ({ cls, children }) => {
 
     return () => {
       window.addEventListener('scroll', () => {})
-      mediaQuery.removeEventListener('change', () => {})
     }
   }, [])
 
-  const tabButton = (data: IAction): ReactNode => {
+  const isActiveLink = (link: string): boolean => link === router.pathname
+
+  const tabButton = (data: ITabMenu): ReactNode => {
     return (
-      <>
-        <span className={`mx-4 font-weight-bold`} onClick={data.action}>
+      <div className={`${isActiveLink(data.link) ? 'tab-active' : ''} tab `}>
+        <a
+          href={data.link}
+          target={data.link.match('www') ? '_blank' : '_self'}
+          className={`mx-3 font-weight-bold`}
+        >
           {data.label.toLocaleUpperCase()}
-        </span>
-      </>
+        </a>
+      </div>
     )
   }
 
   return (
     <div className={'header'}>
-      <div
-        className={`${isMobile ? '' : 'tab-component'} d-flex justify-content-center align-items-center px-4 ${customStyle}`}
-      >
-        {!isMobile && tabMenu.map((item) => tabButton(item)) }
+      <div className={'tab-list'}>
+        <div
+          className={`tab-component  d-flex justify-content-center align-items-center gap-4 px-4 ${customStyle}`}
+        >
+          {tabMenu.map((item) => tabButton(item))}
+        </div>
+        <div
+          style={{
+            minWidth: '100vw',
+            minHeight: '2vh',
+            backgroundImage:
+              'linear-gradient(to bottom, rgba(5, 5, 5, 0.5), rgba(0,0,0,0))',
+            transition: 'opacity 0.2s ease-in-out',
+            opacity: currentPosition > 10 ? '1' : '0',
+          }}
+        />
       </div>
-      <div
-        style={{
-          minWidth: '100vw',
-          minHeight: '2vh',
-          backgroundImage:
-            'linear-gradient(to bottom, rgba(5, 5, 5, 0.5), rgba(0,0,0,0))',
-          transition: 'opacity 0.2s ease-in-out',
-          opacity: currentPosition > 10 ? '1' : '0',
-        }}
-      />
     </div>
   )
 }

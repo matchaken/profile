@@ -1,19 +1,18 @@
 import { tabMenu } from '@/config/constraint'
 import { IAction } from '@/model/action'
+import { ITabMenu } from '@/model/tab'
 import create from 'zustand'
 
 interface ISystemStore {
-  tabMenu: IAction[]
-  addTabMenu: (tabs: IAction[]) => void
-  // isMobile: boolean
+  tabMenu: ITabMenu[]
+  addTabMenu: (tabs: ITabMenu[]) => void
 }
 
 const useSystemStore = create<ISystemStore>((set) => ({
   tabMenu: tabMenu || [],
-  // isMobile: window.matchMedia('(max-width: 500px)'),
-  addTabMenu: (tab: IAction[]) => {
+  addTabMenu: (tab: ITabMenu[]) => {
     set((state) => ({ tabMenu: [...state.tabMenu, ...tab] }))
-  },
+  }
 }))
 
 export default useSystemStore
