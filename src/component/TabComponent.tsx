@@ -33,7 +33,6 @@ const TabComponent: FC<IBaseProps> = ({ cls, children }) => {
           href={data.link}
           target={data.link.match('www') ? '_blank' : '_self'}
           className={`mx-3 font-weight-bold`}
-          style={{color: 'rgb(0,250,250)'}}
         >
           {data.label.toLocaleUpperCase()}
         </a>
@@ -45,7 +44,7 @@ const TabComponent: FC<IBaseProps> = ({ cls, children }) => {
     <div className={'header'}>
       <div className={'tab-list'}>
         <div
-          className={`tab-component  d-flex justify-content-center align-items-center gap-4 px-4 ${customStyle}`}
+          className={`tab-component  d-flex justify-content-start align-items-center gap-4 px-4 ${customStyle}`}
         >
           {tabMenu.map((item) => tabButton(item))}
         </div>

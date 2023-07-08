@@ -16,7 +16,7 @@ const ParticleComponent: FC<IBaseProps> = ({ children }) => {
       options={{
         background: {
           color: {
-            value: '#f1f1f1',
+            value: '#fff',
           },
         },
         fpsLimit: 60,
